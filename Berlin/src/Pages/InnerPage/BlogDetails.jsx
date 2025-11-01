@@ -1,363 +1,191 @@
-import { Link, useLocation } from "react-router-dom";
-import BreadCrumb from "../../BreadCrumb/BreadCrumb";
-import BlogSideBar from "./BlogSideBar";
+import { useParams, Link } from "react-router-dom";
 import { BiChevronsRight } from "react-icons/bi";
+import BreadCrumb from "../../BreadCrumb/BreadCrumb";
+
+const BLOGS = [
+  {
+    id: 1,
+    category: "LUXURY RESORTS",
+    img: "/images/home-1/blog1img.png",
+    title: "Top 5 Luxury Resorts in Wayanad for Your Next Getaway",
+    description:
+      "Wayanad, the emerald gem of Kerala, is a perfect escape for those seeking tranquility, luxury, and a touch of nature. Here are the top five luxury resorts that promise an unforgettable stay in the Western Ghats.",
+    highlights: [
+      {
+        name: "Berlin Holidays Resort",
+        details:
+          "Set amidst coffee plantations and mist-clad hills, Berlin Holidays blends modern comfort with Kerala’s warm hospitality. With private pool villas, Ayurvedic spa sessions, and plantation walks, it’s the ideal choice for couples and families alike.",
+      },
+      {
+        name: "Vythiri Village Resort",
+        details:
+          "A five-star property known for its breathtaking treehouses, infinity pool, and Ayurvedic center. Perfect for travelers who want a blend of nature and luxury.",
+      },
+      {
+        name: "The Windflower Resort & Spa",
+        details:
+          "Tucked deep in the hills, this resort offers rejuvenating spa therapies, yoga sessions, and panoramic valley views.",
+      },
+      {
+        name: "Mount Xanadu Resort",
+        details:
+          "A boutique luxury retreat surrounded by waterfalls, caves, and plantations — ideal for adventure seekers.",
+      },
+      {
+        name: "Wayanad Silverwoods",
+        details:
+          "Known for its beautiful Banasura lakefront villas, this eco-luxury resort offers serenity, privacy, and spectacular sunrise views.",
+      },
+    ],
+    tip: "Travel Tip: Visit between October and February for the most pleasant weather and scenic greenery.",
+  },
+  {
+    id: 2,
+    category: "FINE DINING",
+    img: "/images/home-1/blog2img.png",
+    title: "A Taste of Luxury: Fine Dining Experiences in Wayanad",
+    description:
+      "Luxury dining in Wayanad isn’t just about food — it’s about culture, creativity, and comfort.",
+    highlights: [
+      {
+        name: "Berlin Holidays Restaurant",
+        details:"Known for its signature fusion cuisine, Berlin Holidays offers everything from Malabar seafood platters to continental fine dining, all served with elegance and local flair."
+      },
+      {
+name:"Farm-Fresh Ingredients",
+details:"Many resorts in Wayanad grow their own herbs, spices, and vegetables, ensuring that every dish is as fresh as it is flavorful."
+      },
+      {
+name:"Romantic & Private Dining",
+details:"Experience candlelight dinners under the stars or beside a pool with personalized menus and curated wine selections.",
+      }
+    ],
+    tip: "Taste Tip: Don’t miss Kerala’s classics — Puttu & Kadala Curry, Appam with Stew, and freshly brewed plantation coffee.",
+  },
+  {
+    id: 3,
+    category: "WELLNESS RETREATS",
+    img: "/images/home-1/blog3img.png",
+    title: "Wellness Retreats in Wayanad: Reconnect, Relax & Recharge",
+    description:
+      "Wayanad’s natural charm makes it one of India’s most sought-after wellness destinations. Nestled between mountains and forests, resorts here offer holistic experiences for both mind and body.",
+    highlights: [
+       {
+        name: "Ayurvedic Therapies",
+        details:"Traditional Kerala Ayurveda takes center stage — from full-body massages to detox programs and herbal steam baths that heal naturally."
+      },
+      {
+name:"Yoga & Meditation",
+details:"Morning yoga sessions amidst the mist and birdsong help guests find balance, while guided meditation reconnects them to inner peace."
+      },
+      {
+name:"Organic Dining",
+details:"Resorts like Berlin Holidays serve farm-to-table organic meals using locally grown produce and spices — ensuring wellness from within.",
+      }
+    ],
+    tip: "Pro Tip: Choose a wellness package that includes Ayurvedic consultation for the best personalized experience.",
+  },
+  {
+    id: 4,
+    category: "KERALA ESCAPES",
+    img: "/images/home-1/blog4img.png",
+    title: "Kerala Escapes: Luxury in the Lap of Nature",
+    description:
+      "Kerala — “God’s Own Country” — offers a world of luxury experiences wrapped in nature’s beauty. Here’s why it’s one of the top luxury travel destinations in India.",
+    highlights: [
+       {
+        name: "Backwater Bliss in Alleppey",
+        details:"Experience private houseboats with air-conditioned suites, onboard chefs, and sunset views over calm lagoons."
+      },
+      {
+name:"Beachfront Opulence in Kovalam",
+details:"Relax at ocean-view resorts offering spa treatments, private cabanas, and candlelight dinners by the Arabian Sea."
+      },
+      {
+name:"Adventure & Exploration",
+details:"Enjoy trekking at Chembra Peak, boating in Pookode Lake, or wildlife spotting in the Wayanad Sanctuary — all within easy reach of major resorts.",
+      }
+    ],
+    tip: "Travel Tip: Kerala’s best season for luxury stays is between October and March, when the weather is cool, green, and perfect for outdoor experiences.",
+  },
+];
 
 const BlogDetails = () => {
-  const location = useLocation();
-  const blogData = location.state && location.state;
+  const { id } = useParams();
+  const blog = BLOGS.find((b) => b.id === Number(id));
+
+  if (!blog)
+    return (
+      <h2 className="text-center py-20 text-2xl font-semibold text-red-500">
+        404 - Blog not found
+      </h2>
+    );
 
   return (
     <div>
       <BreadCrumb title="Blog Details" />
-      {/* Blog Details */}
       <div className="dark:bg-lightBlack py-20 2xl:py-[120px]">
         <div className="Container flex justify-center">
-          <div className="col-span-6 md:col-span-4">
+          <div className="col-span-6 md:col-span-4 w-full max-w-4xl">
+            <Link
+              to="/blog"
+              className="text-khaki mb-6 hover:underline underline-offset-2 block"
+            >
+              ← Back to Blogs
+            </Link>
+
             <div className="flex justify-center">
-  <img
-    src="/images/home-1/blogtop5.png"
-    alt=""
-    data-aos="fade-up"
-    data-aos-duration="1000"
-    className="w-auto h-auto"
-  />
-</div>
-
-            {/* Blog Details content */}
-            <div className="pt-5 lg:pt-[35px]  pr-3">
-              <div data-aos="fade-up" data-aos-duration="1000">
-                <p className="text-base font-Garamond text-gray dark:text-lightGray">
-                  {/* <span>August 10, 2023 </span> <span className="mx-2">/</span> */}
-                  <span> LUXURY RESORTS</span>
-                </p>
-                <h2 className="py-2 sm:py-3 md:py-4 lg:py-[19px] 2xl:py-[25px] font-Garamond text-[22px] sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-[38px] 3xl:text-[40px] leading-6 lg:leading-[26px]  text-lightBlack dark:text-white font-semibold">
-                  {blogData && blogData.title
-                    ? blogData.title
-                    : "Top 5 Luxury Resorts in Wayanad for Your Next Getaway"}
-                </h2>
-                <p className="text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-normal font-Lora">
-                  Wayanad, the emerald gem of Kerala, is a perfect escape
-                   for those seeking tranquility, luxury, and a touch of 
-                   nature. Here are the top five luxury resorts that promise
-                    an unforgettable stay in the Western Ghats.
-                </p>
-                <p className="mt-5 2xl:mt-7 text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-normal font-Lora">
-                  Conveniently fashion pandemic potentialities for team driven
-                  technologies. Proactively orchestrate robust systems rather
-                  than user-centric vortals. Distinctively seize top-line
-                  e-commerce with premier intellectual capital. Efficiently
-                  strategize goal-oriented
-                </p>
-              </div>
-
-              {/* Blog Roles */}
-              <div
-                className="pt-10 2xl:pt-[60px]"
+              <img
+                src={blog.img}
+                alt={blog.title}
+                className="w-auto h-auto mx-auto"
                 data-aos="fade-up"
                 data-aos-duration="1000"
-              >
-                <h2
-                  className="pb-2 sm:pb-3 md:pb-4 lg:pb-[19px] 2xl:pb-6
-                font-Garamond text-lg sm:text-xl md:text-2xl xl:text-[28px] leading-6 lg:leading-7 text-lightBlack dark:text-white font-semibold"
-                >
-                  Berlin Holidays Resort
+              />
+            </div>
+
+            <div className="pt-5 lg:pt-[35px] pr-3">
+              <p className="text-base font-Garamond text-gray dark:text-lightGray">
+                {blog.category}
+              </p>
+              <h2 className="py-4 font-Garamond text-3xl text-lightBlack dark:text-white font-semibold">
+                {blog.title}
+              </h2>
+              <p className="text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-Lora">
+                {blog.description}
+              </p>
+
+              <div className="pt-10">
+                <h2 className="pb-4 font-Garamond text-2xl text-lightBlack dark:text-white font-semibold">
+                  Highlights
                 </h2>
-                <p className="text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-normal font-Lora">
-                  Set amidst coffee plantations and mist-clad hills, 
-                  Berlin Holidays blends modern comfort with Kerala’s
-                   warm hospitality. With private pool villas, Ayurvedic
-                    spa sessions, and plantation walks, it’s the ideal 
-                    choice for couples and families alike.
-                </p>
-                <ul className="space-y-2 lg:space-y-3 ">
-                  <li className="flex items-center">
-                    <BiChevronsRight size={16} className="text-khaki mr-2" />
-                    <span className="text-sm lg:text-base leading-[26px] text-gray dark:text-lightGray font-normal font-Lora">
-                     Vythiri Village Resort
-                    </span>
-                  </li>
-                  <li className="flex items-center">
-                    <BiChevronsRight size={16} className="text-khaki mr-2" />
-                    <span className="text-sm lg:text-base leading-[26px] text-gray dark:text-lightGray font-normal font-Lora">
-                      The Windflower Resort & Spa
-                    </span>
-                  </li>
-                  <li className="flex items-center">
-                    <BiChevronsRight size={16} className="text-khaki mr-2" />
-                    <span className="text-sm lg:text-base leading-[26px] text-gray dark:text-lightGray font-normal font-Lora">
-                      Mount Xanadu Resort
-                    </span>
-                  </li>
-                  <li className="flex items-center">
-                    <BiChevronsRight size={16} className="text-khaki mr-2" />
-                    <span className="text-sm lg:text-base leading-[26px] text-gray dark:text-lightGray font-normal font-Lora">
-                     Wayanad Silverwoods
-                    </span>
-                  </li>
+                 <ul className="space-y-6">
+                  {blog.highlights.map((item, index) => (
+                    <li key={index}>
+                      <div className="flex items-center mb-2">
+                        <BiChevronsRight
+                          size={18}
+                          className="text-khaki mr-2"
+                        />
+                        <span className="text-lg font-semibold text-lightBlack dark:text-white font-Garamond">
+                          {item.name}
+                        </span>
+                      </div>
+                      <p className="text-sm lg:text-base text-gray dark:text-lightGray font-Lora ml-6">
+                        {item.details}
+                      </p>
+                    </li>
+                  ))}
                 </ul>
               </div>
-              {/* Extra blog */}
-              <div
-                className="pt-10 2xl:pt-[60px]"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                <div className="pb-2 sm:pb-3 md:pb-4 lg:pb-[19px] 2xl:pb-6 grid items-center grid-cols-1 sm:grid-cols-2 gap-5 2xl:gap-[30px]">
-                  <img src="/images/inner/blog-details-2.jpg" alt="" />
-                  <img src="/images/inner/blog-details-3.jpg" alt="" />
-                </div>
-                <p className="text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-normal font-Lora">
-                  Travel Tip: Visit between October and February for 
-                  the most pleasant weather and scenic greenery.
+
+              <div className="pt-10">
+                <p className="text-sm lg:text-base text-gray dark:text-lightGray font-Lora">
+                  {blog.tip}
                 </p>
-                {/* <p className="mt-5 2xl:mt-7 text-sm lg:text-base leading-6 text-gray dark:text-lightGray font-normal font-Lora">
-                  Holisticly innovate global ROI with user-centric total
-                  linkage. Collaboratively e-enable efficient markets with
-                  multifunctional e-business. Continually incentivize
-                  sustainable products for B2B
-                </p> */}
-              </div>
-
-              <div
-                className="my-10 py-5 border-t-[1px] border-b-[1px] border-lightGray dark:border-gray lg:flex items-center justify-between"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-              >
-                {/* <div className="flex items-center space-x-2">
-                  <h5 className="text-lg text-[#101010] dark:text-white leading-[28px] font-semibold font-Garamond mr-2">
-                    Tags :
-                  </h5>
-                  <span className="text-sm border-[1px] border-lightGray dark:border-gray px-3 py-1 dark:text-white">
-                    SPA Center
-                  </span>
-                  <span className="text-sm border-[1px] border-lightGray dark:border-gray px-3 py-1 dark:text-white">
-                    Luxury
-                  </span>
-                </div> */}
-                {/* social Link */}
-                {/* <div className="flex items-center space-x-2 mt-3 lg:mt-0">
-                  <h5 className="text-lg text-[#101010] dark:text-white leading-[28px] font-semibold font-Garamond mr-2">
-                    Share :
-                  </h5>
-                  <Link
-                    to="#"
-                    className="text-sm  px-3 py-1 dark:text-white hover:text-khaki hover:underline underline-offset-4"
-                  >
-                    FB
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-sm  px-3 py-1 dark:text-white hover:text-khaki hover:underline underline-offset-4"
-                  >
-                    TW
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-sm  px-3 py-1 dark:text-white hover:text-khaki hover:underline underline-offset-4"
-                  >
-                    LN
-                  </Link>
-                  <Link
-                    to="#"
-                    className="text-sm  px-3 py-1 dark:text-white hover:text-khaki hover:underline underline-offset-4"
-                  >
-                    PI
-                  </Link>
-                </div> */}
-              </div>
-
-              {/* gaideline */}
-              {/* <div className="lg:flex items-center gap-5  ">
-                <div
-                  className="p-5 hover:bg-whiteSmoke dark:hover:bg-normalBlack transition-all duration-300 border-[0.5px] border-lightGray dark:border-gray rounded-sm hover:border-whiteSmoke"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                >
-                  <Link to="/blog_details" className="flex items-center">
-                    <img
-                      src="/images/inner/details-post-1.jpg"
-                      className=" mr-3 2xl:mr-5 "
-                      alt=""
-                    />
-                    <div className="text-left">
-                      <h4 className="text-base 2xl:text-lg leading-6 text-[#101010] dark:text-white font-medium font-Garamond hover:underline underline-offset-4">
-                        How to Book a Room Online Step by Step Guide
-                      </h4>
-                      <p className="text-sm md:text-[13px] 2xl:text-sm leading-[26px] font-Lora text-gray dark:text-lightGray font-normal">
-                        August 10, 2023
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-                <div
-                  className="mt-5 lg:mt-0 p-5 hover:bg-whiteSmoke dark:hover:bg-normalBlack transition-all duration-300 border-[0.5px] border-lightGray dark:border-gray rounded-sm hover:border-whiteSmoke"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                >
-                  <Link
-                    to="/blog_details"
-                    className="flex flex-row-reverse items-center"
-                  >
-                    <img
-                      src="/images/inner/details-post-2.jpg"
-                      className=" ml-3 2xl:ml-5 "
-                      alt=""
-                    />
-                    <div className="text-left">
-                      <h4 className="text-base 2xl:text-lg leading-6 text-[#101010] dark:text-white font-medium font-Garamond hover:underline underline-offset-4">
-                        Pre Booking Benifits for the Traveller on our Hotel
-                      </h4>
-                      <p className="text-sm md:text-[13px] 2xl:text-sm leading-[26px] font-Lora text-gray dark:text-lightGray font-normal">
-                        August 10, 2023
-                      </p>
-                    </div>
-                  </Link>
-                </div>
-              </div> */}
-              {/* Comment Section */}
-              <div className="my-10 2xl:my-[60px] 3xl:my-[80px]">
-                {/* <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl 2xl:text-[32px] text-lightBlack dark:text-white font-semibold font-Garamond mb-5 2xl:mb-[30px]">
-                  ‘2’ Comments
-                </h3> */}
-                <div>
-                  {/* <div
-                    className="border-[1px] border-lightGray dark:border-gray rounded-sm p-4 sm:p-5 md:p-6 2xl:p-[30px]"
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                  > */}
-                    {/* <div className="grid gap-3 sm:flex md:grid md:gap-5 lg:flex ">
-                      <img
-                        src="/images/inner/blog-details-author-2.png"
-                        alt=""
-                        className="w-[70px]  h-[70px] "
-                      /> */}
-
-                      {/* <div className="ml-3 2xl:ml-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <span className="text-base sm:text-lg lg:text-xl font-Garamond font-semibold leading-6 md:leading-7 text-lightBlack dark:text-white">
-                              Moris Barbar
-                            </span>
-                            <hr className="w-[10px] sm:w-[27px] h-[1px] text-lightBlack dark:text-white mx-1 sm:mx-2 " />
-                            <span className="text-[13px] sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray">
-                              August 10, 2023
-                            </span>
-                          </div>
-                          <span className="text-[13px] sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray cursor-pointer">
-                            REPLY
-                          </span>
-                        </div>
-                        <p className="text-sm sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray mt-3 xl:mt-[15px]">
-                          Interactively visualize top-line internal or "organic"
-                          sources rather than top-line niche mark unleash 24/7
-                          opportunities after high standards in process
-                          improvements. Uniquely deploy methodologies with
-                          reliable information.{" "}
-                        </p>
-                      </div> */}
-                    {/* </div> */}
-                  {/* </div> */}
-                  {/* comment -2 */}
-                  {/* <div
-                    className="border-[1px] border-lightGray dark:border-gray rounded-sm p-4 sm:p-5 md:p-6 2xl:p-[30px] ml-0 lg:ml-10 3xl:ml-14  mt-5"
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                  > */}
-                    {/* <div className="grid gap-3 sm:flex md:grid md:gap-5 lg:flex ">
-                      <img
-                        src="/images/inner/blog-details-author-1.png"
-                        alt=""
-                        className="w-[70px]  h-[70px] "
-                      /> */}
-
-                      {/* <div className="ml-3 2xl:ml-4"> */}
-                        {/* <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <span className="text-base sm:text-lg lg:text-xl font-Garamond font-semibold leading-6 md:leading-7 text-lightBlack dark:text-white">
-                              Moris Barbar
-                            </span>
-                            <hr className="w-[10px] sm:w-[27px] h-[1px] text-lightBlack dark:text-white mx-1 sm:mx-2 " />
-                            <span className="text-[13px] sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray">
-                              August 10, 2023
-                            </span>
-                          </div>
-                          <span className="text-[13px] sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray cursor-pointer">
-                            REPLY
-                          </span>
-                        </div> */}
-                        {/* <p className="text-sm sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray mt-3 xl:mt-[15px]">
-                          Interactively visualize top-line internal or "organic"
-                          sources rather than top-line niche mark unleash 24/7
-                          opportunities after high standards in process
-                          improvements. Uniquely deploy methodologies with
-                          reliable information.{" "}
-                        </p> */}
-                      {/* </div> */}
-                    {/* </div> */}
-                  {/* </div> */}
-                </div>
-              </div>
-              {/* Comment form */}
-              <div data-aos="fade-up" data-aos-duration="1000">
-                {/* <h3 className="text-lg sm:text-xl lg:text-2xl xl:text-3xl 2xl:text-[32px] text-lightBlack dark:text-white font-semibold font-Garamond mb-5 2xl:mb-[30px]">
-                  Leave A Comments
-                </h3> */}
-                {/* <div>
-                  <div className="flex sm:flex-row flex-col items-center  gap-5 mb-5">
-                    <input
-                      type="text"
-                      name=""
-                      className="w-full h-[50px] border-none outline-none focus:ring-0 placeholder:text-base placeholder:text-lightGray placeholder:leading-[38px] placeholder:font-Lora placeholder:font-normal px-5 dark:bg-normalBlack bg-whiteSmoke dark:text-white"
-                      placeholder="Your Name"
-                      id=""
-                    />
-                    <input
-                      type="email"
-                      name=""
-                      className="w-full h-[50px] border-none outline-none focus:ring-0 placeholder:text-base placeholder:text-lightGray placeholder:leading-[38px] placeholder:font-Lora placeholder:font-normal px-5 dark:bg-normalBlack bg-whiteSmoke dark:text-white"
-                      placeholder="Email Address"
-                      id=""
-                    />
-                  </div>
-                  <div className="grid items-center gap-5 mb-5 md:mb-0">
-                    <input
-                      type="text"
-                      name=""
-                      className="w-full h-[50px] border-none outline-none focus:ring-0 placeholder:text-base placeholder:text-lightGray placeholder:leading-[38px] placeholder:font-Lora placeholder:font-normal px-5 dark:bg-normalBlack bg-whiteSmoke dark:text-white"
-                      placeholder="Your Website"
-                      id=""
-                    />
-
-                    <textarea
-                      className="w-full h-[160px]  border-none outline-none focus:ring-0 placeholder:text-base placeholder:text-lightGray placeholder:leading-[38px] placeholder:font-Lora placeholder:font-normal px-5 dark:bg-normalBlack bg-whiteSmoke dark:text-white resize-none"
-                      placeholder="Type Your Comment"
-                      name=""
-                      id=""
-                      cols="30"
-                    ></textarea>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="border-khaki text-khaki focus:ring-0 focus:outline-none focus:border-none"
-                      />
-                      <p className="text-[13px] sm:text-[15px] font-Lora font-normal text-gray dark:text-lightGray ml-2">
-                        Save your email info in the browser for next comments.
-                      </p>
-                    </div>
-                    <button className="btn-primary">Submit Now</button>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
-          {/* Blog Sidebar */}
-          {/* <div className="col-span-6 md:col-span-3 lg:col-span-2"> */}
-            {/* imported Blog Sidebar */}
-            {/* <BlogSideBar />
-          </div> */}
         </div>
       </div>
     </div>

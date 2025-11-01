@@ -112,10 +112,10 @@ const Navbar = () => {
             >
               <span className="flex items-center">
                 Home
-                <BiChevronDown className="ml-1" />
+                {/* <BiChevronDown className="ml-1" /> */}
               </span>
-              <div className="absolute pt-5 lg:pt-8 z-20">
-                <ul className="shadow-2xl hidden group-hover:block rounded-sm bg-white text-black w-[200px] text-left dark:bg-normalBlack dark:text-white transition-all duration-500 text-sm py-4 ">
+              {/* <div className="absolute pt-5 lg:pt-8 z-20"> */}
+                {/* <ul className="shadow-2xl hidden group-hover:block rounded-sm bg-white text-black w-[200px] text-left dark:bg-normalBlack dark:text-white transition-all duration-500 text-sm py-4 ">
                   <div className=" px-5 group hover:bg-khaki hover:text-white">
                     <li className="hover:ml-3 duration-300  ">
                       <NavLink to="/" className="py-2 block">
@@ -154,8 +154,8 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                   </div>
-                </ul>
-              </div>
+                </ul> */}
+              {/* </div> */}
             </NavLink>
             <NavLink
               className={`${({ isActive, isPending }) =>
@@ -197,13 +197,13 @@ const Navbar = () => {
                       </NavLink>
                     </li>
                   </div>
-                  <div className=" px-5 group hover:bg-khaki hover:text-white">
+                  {/* <div className=" px-5 group hover:bg-khaki hover:text-white">
                     <li className="hover:ml-3 duration-300  ">
                       <NavLink to="/room_details" className="block py-2">
                         Room Details
                       </NavLink>
                     </li>
-                  </div>
+                  </div> */}
                 </ul>
               </div>
             </NavLink>
@@ -217,7 +217,7 @@ const Navbar = () => {
               to="#"
             >
               <span className="flex items-center">
-                Page
+                Service
                 <BiChevronDown className="ml-1" />
               </span>
               <div className="absolute pt-5 lg:pt-8 z-20">
