@@ -60,7 +60,7 @@ const Navbar = () => {
                 <img
                   src="/images/home-3/berlinlogo01.png"
                   className="block lg:hidden "
-                  alt="Royella_website_logo"
+                  alt="Berlin_website_logo"
                 />
               </Link>
             </div>
