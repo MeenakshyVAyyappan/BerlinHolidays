@@ -26,22 +26,19 @@ const HeroSection = () => {
       >
         {/* Single video slide */}
         <SwiperSlide>
-          <div className="relative w-full h-[700px] md:h-[800px] xl:h-[850px] 3xl:h-[950px] overflow-hidden">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="absolute top-0 left-0 w-full h-full object-cover"
-            >
-              <source src="/video/bredcrumpvideo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+  <div className="relative w-full h-[700px] md:h-[800px] xl:h-[850px] 3xl:h-[950px] overflow-hidden">
+    <video
+      src="https://pqurtwq9h9glt111.public.blob.vercel-storage.com/bredcrumpvideo.mov"
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="absolute top-0 left-0 w-full h-full object-cover"
+    />
+    {/* If you truly want ONLY video, remove any overlay content here */}
+  </div>
+</SwiperSlide>
 
-            {/* If you want a slight dark overlay, uncomment below */}
-            {/* <div className="absolute inset-0 bg-[rgba(30,30,30,0.25)]"></div> */}
-          </div>
-        </SwiperSlide>
       </Swiper>
     </div>
   );
