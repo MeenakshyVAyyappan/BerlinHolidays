@@ -65,7 +65,7 @@ const [blogSliderRef] = useKeenSlider({
               data-aos-duration="1000"
             >
               <img
-                src="/images/inner/about-thumb.jpg"
+                src="/images/inner/about_thumb.png"
                 alt=""
                 className="w-full h-full"
               />

@@ -209,3 +209,11 @@ section.Container.py-20.lg\:py-\[120px\] {
     padding-top: 20px !important;
 }
 }
+
+/* header background color */
+@media (min-width: 992px) {
+    .lg\:bg-lightBlack {
+        --tw-bg-opacity: 1;
+        background-color: #c29d6d !important;
+    }
+}

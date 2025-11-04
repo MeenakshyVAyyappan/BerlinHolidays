@@ -16,7 +16,7 @@ const Main = () => {
 
   return (
     <>
-      <HelmetChanger title="Hotel Booking"/>
+      <HelmetChanger title="Holidays"/>
       <ScrollToTop/>
       <GoToTop/>
       <Navbar/>

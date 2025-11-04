@@ -41,7 +41,7 @@ const Navbar = () => {
     <nav
       className={` w-full lg:fixed font-Lora z-10  lg:px-5 lg:py-2  transition-all duration-300 ${navbarBgColor} `}
     >
-      <div className="lg:px-10 bg-black">
+      <div className="lg:px-10" style={{ backgroundColor: '#c29d6d' }}>
         <div className="flex flex-col lg:flex-row items-center justify-between">
           {/* website Logo */}
           <div className=" w-48 lg:w-52 lg:p-4 ">
